@@ -58,6 +58,15 @@ Not published yet.
     assert.ok(!feed.includes("Future test"));
     const sitemap = await readFile(join(fixture, "_site", "sitemap.xml"), "utf8");
     assert.ok(!sitemap.includes("future"));
+    for (const slug of ["about", "resources", "contact"]) {
+      const page = await readFile(join(fixture, "_site", slug, "index.html"), "utf8");
+      assert.match(page, /Example content/u);
+      assert.ok(home.includes(`href="/${slug}/"`));
+      assert.ok(sitemap.includes(`https://www.money-minute.com/${slug}/`));
+    }
+    assert.match(home, /@your-project/u);
+    assert.match(home, /class="placeholder-label">Placeholder/u);
+    assert.ok(!home.includes('href="https://www.instagram.com'));
     await access(join(fixture, "_site", "admin", "decap-cms.js"));
     await access(join(fixture, "_site", "admin", "decap-cms.js.LICENSE.txt"));
     const cmsAssets = await readdir(join(root, "node_modules", "decap-cms", "dist"));
@@ -68,13 +77,32 @@ Not published yet.
 
     const settingsPath = join(fixture, "src", "_data", "settings.json");
     const settings = JSON.parse(await readFile(settingsPath, "utf8"));
-    await writeFile(settingsPath, JSON.stringify({ ...settings, palette: "plum", font: "serif", density: "compact" }));
+    await writeFile(settingsPath, JSON.stringify({
+      ...settings,
+      palette: "plum",
+      font: "serif",
+      density: "compact",
+      social_links: [{ label: "Example <team>", handle: "@sample", url: "https://example.com/student-project" }],
+    }));
+    await writeFile(join(fixture, "src", "pages", "about.md"), `---
+title: Edited About
+description: Edited page summary
+---
+## Edited student content
+`);
     build({ PAGES_PATH_PREFIX: "/www.money-minute.com/", PAGES_BASE_URL: "https://monadictrie.github.io/www.money-minute.com" });
     const projectPost = await readFile(join(fixture, "_site", "posts", "published", "index.html"), "utf8");
     assert.match(projectPost, /href="\/www.money-minute.com\/assets\/site.css"/u);
     assert.match(projectPost, /src="\/www.money-minute.com\/uploads\/test.png"/u);
     assert.match(projectPost, /href="https:\/\/monadictrie.github.io\/www.money-minute.com\/posts\/published\/"/u);
     assert.match(projectPost, /data-palette="plum" data-font="serif" data-density="compact"/u);
+    assert.match(projectPost, /href="https:\/\/example.com\/student-project"/u);
+    assert.match(projectPost, /Example &lt;team&gt;/u);
+    assert.ok(!projectPost.includes('class="placeholder-label"'));
+    const editedPage = await readFile(join(fixture, "_site", "about", "index.html"), "utf8");
+    assert.match(editedPage, /<h1>Edited About<\/h1>/u);
+    assert.match(editedPage, /<h2>Edited student content<\/h2>/u);
+    assert.match(editedPage, /href="\/www.money-minute.com\/about\/" aria-current="page"/u);
     const projectFeed = await readFile(join(fixture, "_site", "feed.xml"), "utf8");
     assert.match(projectFeed, /https:\/\/monadictrie.github.io\/www.money-minute.com\/posts\/published\//u);
   } finally {

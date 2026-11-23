@@ -5,5 +5,10 @@
   "intro": "Read the latest posts below.",
   "palette": "plum",
   "font": "sans",
-  "density": "compact"
+  "density": "compact",
+  "social_links": [
+    { "label": "Instagram", "handle": "@your-project", "url": "" },
+    { "label": "TikTok", "handle": "@your-project", "url": "" },
+    { "label": "YouTube", "handle": "@your-project", "url": "" }
+  ]
 }

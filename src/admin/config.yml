@@ -43,6 +43,32 @@ collections:
       - { label: Cover image, name: cover, widget: image, required: false, allow_multiple: false }
       - { label: Cover image description, name: cover_alt, widget: string, required: false, hint: "Describe the image for screen readers; leave empty only for a decorative image." }
       - { label: Body, name: body, widget: markdown }
+  - name: pages
+    label: Pages
+    editor:
+      preview: false
+    files:
+      - name: about
+        label: About
+        file: src/pages/about.md
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Summary, name: description, widget: text }
+          - { label: Body, name: body, widget: markdown }
+      - name: resources
+        label: Resources
+        file: src/pages/resources.md
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Summary, name: description, widget: text }
+          - { label: Body, name: body, widget: markdown }
+      - name: contact
+        label: Contact
+        file: src/pages/contact.md
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Summary, name: description, widget: text }
+          - { label: Body, name: body, widget: markdown }
   - name: settings
     label: Site settings
     editor:
@@ -75,3 +101,18 @@ collections:
             options:
               - { label: Comfortable, value: comfortable }
               - { label: Compact, value: compact }
+          - label: Social links
+            name: social_links
+            widget: list
+            required: false
+            summary: "{{fields.label}} - {{fields.handle}}"
+            hint: "Example handles are marked Placeholder until you add a real HTTPS profile URL."
+            fields:
+              - { label: Platform or link label, name: label, widget: string }
+              - { label: Handle, name: handle, widget: string, required: false }
+              - label: Profile URL
+                name: url
+                widget: string
+                required: false
+                hint: "Leave empty for a non-clickable placeholder. Add only your project's approved public profile."
+                pattern: ['^https://\S+$', "Use a full HTTPS URL without spaces."]

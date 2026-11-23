@@ -25,3 +25,24 @@ test("design settings reject unsupported values and empty required text", () => 
   assert.throws(() => validateSettings({ ...settings, palette: 'forest" onclick="alert(1)' }), /supported/u);
   assert.throws(() => validateSettings({ ...settings, intro: "" }), /intro/u);
 });
+
+test("social settings accept unlinked placeholder handles and real HTTPS profile links", () => {
+  const settings = { title: "Blog", description: "Description", heading: "Heading", intro: "Introduction", palette: "forest", font: "sans", density: "compact" };
+  assert.doesNotThrow(() => validateSettings({
+    ...settings,
+    social_links: [
+      { label: "Instagram", handle: "@your-project", url: "" },
+      { label: "Project", url: "https://example.com/student-project" },
+    ],
+  }));
+});
+
+test("social settings reject unsafe URLs and malformed entries", () => {
+  const settings = { title: "Blog", description: "Description", heading: "Heading", intro: "Introduction", palette: "forest", font: "sans", density: "compact" };
+  assert.throws(() => validateSettings({ ...settings, social_links: {} }), /list/u);
+  assert.throws(() => validateSettings({ ...settings, social_links: [{ label: "" }] }), /label/u);
+  assert.throws(() => validateSettings({ ...settings, social_links: [{ label: "Profile", url: 123 }] }), /text/u);
+  for (const url of ["javascript:alert(1)", "http://example.com", "not-a-url", "https://user:password@example.com", "https://example.com/profile name"]) {
+    assert.throws(() => validateSettings({ ...settings, social_links: [{ label: "Profile", url }] }), /social URLs/u);
+  }
+});

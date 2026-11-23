@@ -18,14 +18,35 @@
     <header class="site-header shell">
       <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">M</span>{{ site.title | escape }}</a>
       <nav aria-label="Main navigation">
-        <a href="/">Posts</a>
+        <a href="/"{% if page.url == '/' %} aria-current="page"{% endif %}>Posts</a>
+        <a href="/about/"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a>
+        <a href="/resources/"{% if page.url == '/resources/' %} aria-current="page"{% endif %}>Resources</a>
+        <a href="/contact/"{% if page.url == '/contact/' %} aria-current="page"{% endif %}>Contact</a>
         <a href="/admin/">Editor</a>
       </nav>
     </header>
     <main id="main" class="shell">{{ content | safe }}</main>
     <footer class="site-footer shell">
-      <span>{{ site.title | escape }}</span>
-      <a href="/feed.xml">RSS / Atom feed</a>
+      <div class="footer-brand">
+        <strong>{{ site.title | escape }}</strong>
+        <a href="/feed.xml">RSS / Atom feed</a>
+      </div>
+      <section aria-labelledby="social-heading">
+        <h2 id="social-heading">Social links</h2>
+        <ul class="social-links">
+          {% for social in site.social_links %}
+          <li>
+            {% if social.url %}
+            <a href="{{ social.url | escape }}">{{ social.label | escape }}{% if social.handle %} <span class="social-handle">{{ social.handle | escape }}</span>{% endif %}</a>
+            {% else %}
+            <span class="social-placeholder">{{ social.label | escape }}{% if social.handle %} <span class="social-handle">{{ social.handle | escape }}</span>{% endif %} <span class="placeholder-label">Placeholder</span></span>
+            {% endif %}
+          </li>
+          {% else %}
+          <li>No social accounts added yet.</li>
+          {% endfor %}
+        </ul>
+      </section>
     </footer>
   </body>
 </html>

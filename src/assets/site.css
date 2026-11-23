@@ -27,8 +27,9 @@ h3 { font-size: 1.65rem; margin: .3em 0 .65em; }
 .site-header { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding-block: 1.75rem; border-bottom: 1px solid var(--line); }
 .brand { display: flex; align-items: center; gap: .65rem; color: var(--ink); text-decoration: none; font-weight: 750; font-size: 1.25rem; }
 .brand-mark { display: grid; place-items: center; background: var(--accent); color: white; border-radius: .65rem; width: 2.3rem; height: 2.3rem; font-family: system-ui, sans-serif; }
-nav { display: flex; gap: 1.5rem; }
+nav { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; }
 nav a { text-decoration: none; font-weight: 600; }
+nav a[aria-current="page"] { text-decoration: underline; }
 .hero { padding-block: clamp(3rem, 8vw, 6rem); }
 .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .12em; font-size: .75rem; font-weight: 750; }
 .lede { font-size: 1.25rem; max-width: 55ch; color: var(--muted); }
@@ -45,6 +46,12 @@ nav a { text-decoration: none; font-weight: 600; }
 .empty-state { grid-column: 1 / -1; background: var(--tint); border-radius: 1rem; padding: 3rem; }
 .empty-state p { color: var(--muted); margin-bottom: 0; }
 .site-footer { border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 1rem; padding-block: 2rem; font-size: .85rem; color: var(--muted); }
+.footer-brand > strong { display: block; margin-bottom: .4rem; color: var(--ink); }
+.site-footer h2 { font-size: 1rem; letter-spacing: 0; margin: 0 0 .75rem; }
+.social-links { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; padding: 0; margin: 0; list-style: none; }
+.social-links a, .social-placeholder { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; }
+.social-handle { color: var(--muted); }
+.placeholder-label { font-size: .65rem; font-weight: 600; background: var(--tint); color: var(--accent); padding: .1rem .35rem; border-radius: .25rem; }
 .post { max-width: 780px; margin: 3rem auto 5rem; }
 .back-link { font-size: .9rem; }
 .post-header { margin-block: 2.5rem; }

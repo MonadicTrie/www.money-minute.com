@@ -158,15 +158,32 @@ easier.
 
 **Site settings > Text and design** allows editing the site's title, description,
 home-page heading/introduction, three colour palettes, serif/sans-serif fonts,
-and comfortable/compact spacing. Arbitrary CSS, HTML, and deployment settings
+comfortable/compact spacing, and social links. Arbitrary CSS, HTML, and deployment settings
 are deliberately not CMS fields. Raw HTML in post Markdown is rendered as text.
 The public site needs no JavaScript; the editor is a separate browser application.
 There are no deploy previews in this setup; review the draft text in Decap or
 build its branch locally.
 
+### Example pages and socials
+
+The top navigation includes **Posts**, **About**, **Resources**, and **Contact**.
+In the editor's **Pages** collection, edit each page's title, summary, and body;
+changes use the same draft/review/publish workflow as posts. The initial page
+copy is clearly marked as an example for students to replace, not a finished
+description of a business or team. No contact form or private contact details
+are included.
+
+**Site settings > Text and design > Social links** starts with Instagram,
+TikTok, and YouTube handles named `@your-project`. These are visibly marked
+**Placeholder** and are deliberately not linked to potentially real accounts.
+Edit the labels/handles and add approved HTTPS profile URLs to make them
+clickable, or remove entries you do not need. Blank URLs remain placeholders;
+non-HTTPS URLs and embedded URL credentials fail validation.
+
 ## Content and maintenance
 
-- Posts: `src/posts/*.md`; media: `src/uploads`; design: `src/_data/settings.json`.
+- Posts: `src/posts/*.md`; pages: `src/pages/*.md`; media: `src/uploads`;
+  design and socials: `src/_data/settings.json`.
 - Templates: `src/_includes`; styles: `src/assets/site.css`; CMS: `src/admin`.
 - OAuth: `oauth/worker.js`; non-secret environment settings: `oauth/wrangler.jsonc`.
 - A post's filename determines its permanent URL. Avoid renaming published posts
