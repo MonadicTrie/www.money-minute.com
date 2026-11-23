@@ -1,9 +1,9 @@
 {
   "title": "Money Minute",
   "description": "The Money Minute blog.",
-  "heading": "Money Minute",
+  "heading": "Money Minute Project",
   "intro": "Read the latest posts below.",
-  "palette": "ocean",
+  "palette": "plum",
   "font": "sans",
-  "density": "comfortable"
+  "density": "compact"
 }
