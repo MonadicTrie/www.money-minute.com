@@ -4,6 +4,12 @@
   "main": "worker.js",
   "compatibility_date": "2026-11-01",
   "workers_dev": true,
+  "routes": [
+    {
+      "pattern": "cms-auth.money-minute.com",
+      "custom_domain": true
+    }
+  ],
   "vars": {
     "CMS_ORIGIN": "https://www.money-minute.com",
     "OAUTH_ORIGIN": "https://cms-auth.money-minute.com",

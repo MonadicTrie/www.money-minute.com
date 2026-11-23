@@ -4,11 +4,13 @@ A static blog built with Eleventy, published by GitHub Pages, and edited in the
 browser with Decap CMS. The confirmed site domain is **www.money-minute.com**.
 No articles or business claims have been supplied; the home page starts empty.
 
-**Current state:** GitHub Pages is enabled with **GitHub Actions** as its source,
-but this site's code has not been merged or deployed. Nothing has changed Cloudflare
-DNS, created an OAuth app, or deployed the OAuth Worker. The proposed OAuth
-hostname `cms-auth.money-minute.com` must be approved and configured before
-browser sign-in will work.
+**Current state:** the site is deployed to GitHub Pages with the custom domain
+`www.money-minute.com` and a DNS-only Cloudflare CNAME pointing to
+`monadictrie.github.io`. The OAuth Worker is deployed at
+`cms-auth.money-minute.com`, with its three credentials stored as encrypted
+Cloudflare secrets. GitHub's website certificate is issued and HTTPS is enforced.
+A `main` branch ruleset requires review and a passing build, with an owner/admin
+bypass.
 
 ## Develop
 
@@ -25,22 +27,27 @@ in `_site`; edit source files rather than generated output.
 
 The pinned Decap distribution is copied from npm into the site's admin folder;
 the production editor does not load JavaScript from an unpinned CDN.
+The local server previews the public site; CMS sign-in is deliberately limited
+to `https://www.money-minute.com`. Edit Markdown locally or use the production
+editor rather than trying to authenticate the CMS from localhost.
 
 ## Enable GitHub Pages
 
-1. Review and merge this setup into `main`.
+1. The initial setup is already on `main`. Review and merge future changes there.
 2. In the repository's **Settings > Pages**, confirm **Source: GitHub Actions**
-   (already enabled). The temporary Pages URL is
-   `https://monadictrie.github.io/www.money-minute.com/`; no custom domain is
-   attached yet.
+   (already enabled). The original Pages URL is
+   `https://monadictrie.github.io/www.money-minute.com/`; it redirects to the
+   configured custom domain.
 3. Verify ownership of `money-minute.com` in the GitHub account's **Settings >
    Pages** using the account-specific TXT record GitHub provides. Obtain
    permission before creating any DNS record.
-4. Set the repository's Pages **Custom domain** to `www.money-minute.com`
-   **before** pointing DNS at GitHub, to reduce domain takeover risk.
+4. The repository's Pages **Custom domain** is set to `www.money-minute.com`.
+   Set this **before** pointing DNS at GitHub when repeating this setup, to
+   reduce domain takeover risk.
 5. With DNS approval, create a Cloudflare **DNS-only** CNAME record:
    name `www`, target `monadictrie.github.io` (no repository path).
-   Inspect existing records first; do not overwrite unrelated records.
+   This record is now configured. Inspect existing records first when making
+   future changes; do not overwrite unrelated records.
 6. When GitHub's certificate is ready, enable **Enforce HTTPS**.
 7. Run the **Publish site** workflow or push to `main`. Before the custom domain
    is configured, its build uses the default Pages project path automatically.
@@ -65,7 +72,7 @@ Google sign-in is not part of this setup; editors use GitHub accounts.
 Complete these steps yourself, or explicitly authorize deployment through an
 authenticated Cloudflare account. **Never paste secrets in an issue or chat.**
 
-1. Approve the proposed OAuth hostname `cms-auth.money-minute.com`. Alternatives
+1. The configured OAuth hostname is `cms-auth.money-minute.com`. Alternatives
    include the Worker's assigned `workers.dev` hostname, which needs no custom
    DNS record. Keep the actual HTTPS origin identical in
    `oauth/wrangler.jsonc` (`OAUTH_ORIGIN`) and `src/admin/config.yml`
@@ -92,11 +99,11 @@ authenticated Cloudflare account. **Never paste secrets in an issue or chat.**
    `STATE_SECRET` should be a password-manager-generated random value with at
    least 32 characters. Use the interactive secret prompts; do not put these
    values into command arguments, source files, or Wrangler `vars`.
-4. With explicit DNS/service approval, attach `cms-auth.money-minute.com` to the
-   Worker under **Workers & Pages > money-minute-cms-oauth > Settings > Domains
-   & Routes > Add > Custom Domain**. Cloudflare manages that hostname's DNS and
-   TLS. Do not point it at GitHub Pages. The configuration intentionally has no
-   route that creates a DNS record during `wrangler deploy`.
+4. The approved `cms-auth.money-minute.com` custom domain is attached to the
+   Worker and declared in `oauth/wrangler.jsonc`. Future `wrangler deploy`
+   commands maintain this routing. Cloudflare manages that hostname's DNS and
+   TLS. Do not point it at GitHub Pages. Approve any replacement domain and its
+   DNS changes before modifying the route.
 5. Ensure `main` has the final CMS OAuth hostname, deploy the site, and open
    `https://www.money-minute.com/admin/`. Verify sign-in with an invited editor,
    create a draft, review its PR, publish it, and confirm the Pages workflow.
@@ -106,7 +113,7 @@ short-lived state and binds it to a Secure/HttpOnly cookie, checks repository
 Write permission, and sends the token only to the configured CMS origin after
 the Decap handshake. Token responses are uncached and use a nonce-based CSP.
 The client secret never enters the browser. Automated tests use fake tokens;
-real login cannot be verified until the app and Worker are provisioned.
+verify real browser login after the website's HTTPS certificate is ready.
 
 **Permission tradeoff:** GitHub OAuth's `public_repo` is not repository-scoped:
 it can grant access to other public repositories the editor can access.
@@ -137,14 +144,15 @@ does not grant editing rights.
    follow the same workflow. Newly uploaded media is public repository content,
    even before an article is published; never upload confidential information.
 
-Before inviting students, enable a branch ruleset for `main` that requires a
-pull request, at least one approval, and the **build** status check from
-**Publish site**. Do not allow student bypasses or direct pushes. Until those
-rules are configured, Decap's editorial mode is a workflow convention, not an
-enforced separation of author and publisher: Write users can publish/merge.
-The reviewer can merge approved PRs in GitHub if CMS publishing is blocked by
-repository rules. Branch-rule enforcement is an owner setup step, not something
-this scaffold claims to have enabled.
+The **Editorial review** branch ruleset is enabled for `main`: it requires a
+pull request, one approval, resolved review threads, and the **build** check
+from GitHub Actions. New pushes dismiss stale approvals. Only repository
+administrators can bypass these rules; ordinary Write collaborators cannot
+push directly or publish unreviewed drafts. Invite students with Write access,
+not administrator access. An owner/admin can publish their own work using the
+bypass. Reviewers can merge approved PRs in GitHub if CMS publishing is blocked
+by repository rules. Do not disable the rules merely to make CMS publishing
+easier.
 
 **Site settings > Text and design** allows editing the site's title, description,
 home-page heading/introduction, three colour palettes, serif/sans-serif fonts,
