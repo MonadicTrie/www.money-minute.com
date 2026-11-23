@@ -1,0 +1,14 @@
+---
+layout: base.njk
+---
+<article class="post">
+  <a class="back-link" href="/">All posts</a>
+  <header class="post-header">
+    {% if category %}<p class="eyebrow">{{ category | escape }}</p>{% endif %}
+    <h1>{{ title | escape }}</h1>
+    <p class="lede">{{ description | escape }}</p>
+    <p class="meta">{{ author | escape }} <span aria-hidden="true">/</span> <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time></p>
+    {% if cover %}<img class="cover" src="{{ cover | escape }}" alt="{{ cover_alt | escape }}" width="1200" decoding="async">{% endif %}
+  </header>
+  <div class="prose">{{ content | safe }}</div>
+</article>

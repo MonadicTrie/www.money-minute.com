@@ -1,0 +1,22 @@
+{
+  "name": "money-minute",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "test": "node --test",
+    "check": "npm test && npm run build",
+    "oauth:check": "wrangler deploy --dry-run --config oauth/wrangler.jsonc",
+    "oauth:deploy": "wrangler deploy --config oauth/wrangler.jsonc"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.8",
+    "decap-cms": "3.18.0",
+    "wrangler": "4.167.0"
+  }
+}

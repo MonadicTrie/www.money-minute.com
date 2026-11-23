@@ -1,0 +1,26 @@
+---
+layout: base.njk
+---
+<section class="hero" aria-labelledby="heading">
+  <p class="eyebrow">The blog</p>
+  <h1 id="heading">{{ site.heading | escape }}</h1>
+  <p class="lede">{{ site.intro | escape }}</p>
+</section>
+<section class="posts-section" aria-labelledby="posts-heading">
+  <div class="section-heading"><h2 id="posts-heading">Latest posts</h2><span>{{ collections.posts.length }} {% if collections.posts.length == 1 %}post{% else %}posts{% endif %}</span></div>
+  <div class="post-grid">
+    {% for post in collections.posts %}
+    <article class="post-card">
+      {% if post.data.cover %}<img src="{{ post.data.cover | escape }}" alt="{{ post.data.cover_alt | escape }}" width="600" loading="lazy" decoding="async">{% endif %}
+      <div class="card-content">
+        {% if post.data.category %}<p class="eyebrow">{{ post.data.category | escape }}</p>{% endif %}
+        <h3><a href="{{ post.url | escape }}">{{ post.data.title | escape }}</a></h3>
+        <p>{{ post.data.description | escape }}</p>
+        <p class="meta">{{ post.data.author | escape }} <span aria-hidden="true">/</span> <time datetime="{{ post.data.date | isoDate }}">{{ post.data.date | readableDate }}</time></p>
+      </div>
+    </article>
+    {% else %}
+    <div class="empty-state"><h3>No posts yet</h3><p>Published posts will appear here.</p></div>
+    {% endfor %}
+  </div>
+</section>

@@ -1,0 +1,77 @@
+backend:
+  name: github
+  repo: MonadicTrie/www.money-minute.com
+  branch: main
+  # Reserved proposal: deploy the Worker and confirm this hostname before login.
+  base_url: https://cms-auth.money-minute.com
+  auth_endpoint: auth
+  squash_merges: true
+  use_graphql: true
+
+publish_mode: editorial_workflow
+site_url: https://www.money-minute.com
+display_url: https://www.money-minute.com
+media_folder: src/uploads
+public_folder: /uploads
+
+collections:
+  - name: posts
+    label: Posts
+    label_singular: Post
+    folder: src/posts
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: "posts/{{slug}}"
+    summary: "{{title}} - {{author}}"
+    sortable_fields: [date, title, author]
+    editor:
+      preview: false
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Summary, name: description, widget: text, hint: "A short introduction shown on the home page and in search results." }
+      - { label: Author, name: author, widget: string }
+      - label: Publication date
+        name: date
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+        hint: "Future-dated posts are hidden until a daily site rebuild after this date (UTC)."
+      - { label: Category, name: category, widget: string, required: false }
+      - { label: Cover image, name: cover, widget: image, required: false, allow_multiple: false }
+      - { label: Cover image description, name: cover_alt, widget: string, required: false, hint: "Describe the image for screen readers; leave empty only for a decorative image." }
+      - { label: Body, name: body, widget: markdown }
+  - name: settings
+    label: Site settings
+    editor:
+      preview: false
+    files:
+      - name: design
+        label: Text and design
+        file: src/_data/settings.json
+        fields:
+          - { label: Site title, name: title, widget: string }
+          - { label: Site description, name: description, widget: text }
+          - { label: Home page heading, name: heading, widget: string }
+          - { label: Home page introduction, name: intro, widget: text }
+          - label: Colour palette
+            name: palette
+            widget: select
+            options:
+              - { label: Forest, value: forest }
+              - { label: Ocean, value: ocean }
+              - { label: Plum, value: plum }
+          - label: Font style
+            name: font
+            widget: select
+            options:
+              - { label: Modern sans-serif, value: sans }
+              - { label: Classic serif, value: serif }
+          - label: Spacing
+            name: density
+            widget: select
+            options:
+              - { label: Comfortable, value: comfortable }
+              - { label: Compact, value: compact }
