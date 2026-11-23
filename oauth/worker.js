@@ -116,7 +116,8 @@ if (!window.opener) {
 async function githubJson(fetcher, url, options) {
   let response;
   try {
-    response = await fetcher(url, { ...options, signal: AbortSignal.timeout(10000), redirect: "error" });
+    // Workers lacks redirect: "error"; reject redirects with the status check below.
+    response = await fetcher(url, { ...options, signal: AbortSignal.timeout(10000), redirect: "manual" });
   } catch (error) {
     if (error instanceof TypeError || error instanceof DOMException) {
       throw new UpstreamError("GitHub could not be reached.");

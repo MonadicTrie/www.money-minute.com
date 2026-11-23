@@ -17,6 +17,7 @@
   "devDependencies": {
     "@11ty/eleventy": "3.1.8",
     "decap-cms": "3.18.0",
+    "miniflare": "5.20261123.0-beta",
     "wrangler": "4.167.0"
   }
 }

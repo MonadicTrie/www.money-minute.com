@@ -24,6 +24,8 @@ npm run dev
 Open the URL printed by Eleventy. `npm run check` runs the tests and production
 build. `npm run oauth:check` bundles the Worker without deploying it. Output is
 in `_site`; edit source files rather than generated output.
+The OAuth tests include the real Workers runtime, with mocked GitHub responses
+and fake credentials, to catch differences from Node's Fetch implementation.
 
 The pinned Decap distribution is copied from npm into the site's admin folder;
 the production editor does not load JavaScript from an unpinned CDN.
