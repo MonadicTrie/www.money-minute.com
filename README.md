@@ -144,6 +144,10 @@ every page, not just your article. The available choices include colour
 palettes, font styles, and spacing. More substantial layout changes need a
 maintainer's help.
 
+The **Burgundy, coral and cream** palette matches the project's floral,
+editorial look. The other palettes remain available. Site title, home-page
+heading, and introduction are still editable in the same settings form.
+
 Social handles such as `@your-project` are marked **Placeholder** and are not
 clickable. They are examples, not real project accounts.
 Under **Site settings > Text and design > Social links**, add an approved

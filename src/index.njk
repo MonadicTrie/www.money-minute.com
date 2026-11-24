@@ -2,9 +2,10 @@
 layout: base.njk
 ---
 <section class="hero" aria-labelledby="heading">
-  <p class="eyebrow">The blog</p>
-  <h1 id="heading">{{ site.heading | escape }}</h1>
+  <p class="eyebrow">{{ site.heading | escape }}</p>
+  <h1 id="heading">{{ site.title | escape }}</h1>
   <p class="lede">{{ site.intro | escape }}</p>
+  <a class="hero-link" href="#posts-heading">Explore the posts <span aria-hidden="true">&darr;</span></a>
 </section>
 <section class="posts-section" aria-labelledby="posts-heading">
   <div class="section-heading"><h2 id="posts-heading">Latest posts</h2><span>{{ collections.posts.length }} {% if collections.posts.length == 1 %}post{% else %}posts{% endif %}</span></div>

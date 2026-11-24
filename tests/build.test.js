@@ -74,12 +74,13 @@ Not published yet.
       await access(join(fixture, "_site", "admin", asset));
     }
     await access(join(fixture, "_site", "admin", "config.yml"));
+    await access(join(fixture, "_site", "assets", "flower.svg"));
 
     const settingsPath = join(fixture, "src", "_data", "settings.json");
     const settings = JSON.parse(await readFile(settingsPath, "utf8"));
     await writeFile(settingsPath, JSON.stringify({
       ...settings,
-      palette: "plum",
+      palette: "editorial",
       font: "serif",
       density: "compact",
       social_links: [{ label: "Example <team>", handle: "@sample", url: "https://example.com/student-project" }],
@@ -95,7 +96,7 @@ description: Edited page summary
     assert.match(projectPost, /href="\/www.money-minute.com\/assets\/site.css"/u);
     assert.match(projectPost, /src="\/www.money-minute.com\/uploads\/test.png"/u);
     assert.match(projectPost, /href="https:\/\/monadictrie.github.io\/www.money-minute.com\/posts\/published\/"/u);
-    assert.match(projectPost, /data-palette="plum" data-font="serif" data-density="compact"/u);
+    assert.match(projectPost, /data-palette="editorial" data-font="serif" data-density="compact"/u);
     assert.match(projectPost, /href="https:\/\/example.com\/student-project"/u);
     assert.match(projectPost, /Example &lt;team&gt;/u);
     assert.ok(!projectPost.includes('class="placeholder-label"'));
