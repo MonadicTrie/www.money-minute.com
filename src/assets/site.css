@@ -43,26 +43,26 @@ h1 { font-size: clamp(2.75rem, 7vw, 5.5rem); margin: .35em 0; }
 h2 { font-size: clamp(2rem, 4vw, 3rem); }
 h3 { font-size: 1.8rem; margin: .3em 0 .65em; }
 .shell { width: calc(100% - 4rem); margin-inline: auto; }
-.site-header { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding-block: 1.5rem; border-bottom: 1px solid var(--line); }
+.site-header { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding-block: 1.5rem; }
 .brand { display: flex; align-items: center; gap: .75rem; min-width: 0; overflow-wrap: anywhere; color: var(--ink); text-decoration: none; font-family: Georgia, "Times New Roman", serif; font-weight: 700; font-size: 1.5rem; line-height: 1.15; }
 .brand-mark { display: grid; place-items: center; flex-shrink: 0; background: var(--ink); color: var(--bg); border-radius: 50%; width: 2.3rem; height: 2.3rem; font-size: 1.3rem; font-style: italic; }
 nav { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; }
 nav a { text-decoration: none; font-weight: 600; font-size: .85rem; }
 nav a[aria-current="page"] { text-decoration: underline; }
-.hero { position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; align-items: center; padding: 5rem 1rem 6rem; text-align: center; }
+.hero { position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; align-items: center; width: calc(100% + 4rem); margin-inline: -2rem; padding: 5rem 1rem 6rem; text-align: center; }
 .hero > * { position: relative; z-index: 1; }
 .hero::before, .hero::after {
   content: "";
   position: absolute;
   z-index: 0;
-  width: clamp(10rem, 26vw, 21rem);
+  width: min(clamp(10rem, 26vw, 21rem), max(1rem, calc(100vh - 8rem)));
   aspect-ratio: 1;
   background: var(--petal);
   mask: url("./flower.svg") center / contain no-repeat;
   pointer-events: none;
 }
-.hero::before { top: -4rem; left: -9rem; transform: rotate(15deg); }
-.hero::after { right: -9rem; bottom: -3rem; background: var(--petal-alt); transform: rotate(-15deg); }
+.hero::before { top: 3rem; left: -9rem; transform: rotate(15deg); }
+.hero::after { right: -9rem; bottom: 3rem; background: var(--petal-alt); transform: rotate(-15deg); }
 .hero h1 { width: 8ch; max-width: 100%; margin: .15em 0 .2em; font-size: clamp(3.25rem, 15vw, 11rem); line-height: .87; letter-spacing: -.065em; text-transform: uppercase; }
 .hero h1::first-line { color: var(--display); }
 .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .16em; font-size: .8rem; font-weight: 750; }
@@ -71,7 +71,7 @@ nav a[aria-current="page"] { text-decoration: underline; }
 .hero .lede { max-width: 36ch; margin: 1rem 0 1.5rem; }
 .hero-link { display: inline-flex; align-items: center; gap: 1.5rem; min-height: 44px; padding: .6rem 1.25rem; border: 1px solid var(--line); border-radius: 2rem; text-decoration: none; font-size: .85rem; font-weight: 600; }
 .hero-link:hover { background: var(--tint); }
-.section-heading { display: flex; justify-content: space-between; align-items: center; gap: 1rem; border-top: 1px solid var(--line); padding-top: 1.5rem; }
+.section-heading { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-top: 1.5rem; }
 .section-heading h2 { margin: 0; }
 .section-heading span, .meta { color: var(--muted); font-size: .85rem; }
 .post-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; padding-block: 2rem 5rem; }
@@ -118,9 +118,9 @@ body[data-density="compact"] .hero { padding-block: 4rem 5rem; }
   .shell { width: calc(100% - 2rem); }
   nav { gap: .25rem 1.25rem; }
   nav a { display: inline-flex; align-items: center; min-height: 44px; }
-  .hero, body[data-density="compact"] .hero { padding: 3.5rem .5rem 4rem; }
-  .hero::before { top: -4rem; left: -7rem; }
-  .hero::after { bottom: -3rem; right: -7rem; }
+  .hero, body[data-density="compact"] .hero { width: calc(100% + 2rem); margin-inline: -1rem; padding: 3.5rem .5rem 4rem; }
+  .hero::before { left: -7rem; }
+  .hero::after { right: -7rem; }
   .hero .lede { font-size: 1rem; }
   .post-grid { grid-template-columns: 1fr; }
   .section-heading { align-items: baseline; }
