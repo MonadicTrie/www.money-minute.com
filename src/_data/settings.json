@@ -3,12 +3,24 @@
   "description": "The Money Minute blog.",
   "heading": "Money Minute Project",
   "intro": "Read the latest posts below.",
-  "palette": "plum",
+  "palette": "forest",
   "font": "sans",
   "density": "compact",
   "social_links": [
-    { "label": "Instagram", "handle": "@your-project", "url": "" },
-    { "label": "TikTok", "handle": "@your-project", "url": "" },
-    { "label": "YouTube", "handle": "@your-project", "url": "" }
+    {
+      "label": "Instagram",
+      "handle": "@your-project",
+      "url": ""
+    },
+    {
+      "label": "TikTok",
+      "handle": "@your-project",
+      "url": ""
+    },
+    {
+      "label": "YouTube",
+      "handle": "@your-project",
+      "url": ""
+    }
   ]
 }
