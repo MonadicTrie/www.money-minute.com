@@ -1,6 +1,6 @@
 ---
 title: About the project
-description: An example introduction to this student project.
+description: An example introduction to this DECA student project.
 ---
 > **Example content:** use this page as a starting point. Replace the prompts with accurate information about your own project.
 
