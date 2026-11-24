@@ -1,12 +1,12 @@
 ---
 title: About the project
-description: An example introduction to this student project.
+description: An example introduction to this project.
 ---
 > **Example content:** use this page as a starting point. Replace the prompts with accurate information about your own project.
 
 ## The idea
 
-Money Minute is a student project. Describe the topic you are exploring, who you hope will read your work, and why you chose it.
+Money Minute is a DECA student project. Describe the topic you are exploring, who you hope will read your work, and why you chose it.
 
 ## What readers can expect
 
