@@ -10,38 +10,38 @@ networking, DNS, or how the sign-in software works to contribute.
 | --- | --- |
 | [Public website](https://www.money-minute.com/) | Read what is currently published. |
 | [Editor](https://www.money-minute.com/admin/) | Write and edit content after signing in. |
-| [Project on GitHub](https://github.com/MonadicTrie/www.money-minute.com) | See proposed changes, reviews, and project history. |
+| [Project on GitHub](https://github.com/MonadicTrie/www.money-minute.com) | See the project's files, update progress, and change history. |
 
 ## 1. Understand the publishing process
 
-Think of the project like a school magazine: you prepare an article, someone
-reviews it, and an approved version is published for readers.
+Members with **Write** access can publish straight from the editor. There is
+no required pull request or approval step.
 
-**Write a draft -> Ask for review -> Make improvements -> Publish -> Check the website**
+**Prepare your text -> Check it -> Save/publish -> Wait for the update -> Check the website**
 
 | Stage | What it means |
 | --- | --- |
-| Draft | Work you have saved but have not yet published on the website. |
-| In review | You are asking someone to check your work and give feedback. |
-| Approved | A reviewer has approved the proposed change in GitHub. |
-| Published | The approved change has been accepted, and the website has finished updating. |
+| Draft | Work in progress you prepare in an approved writing tool before publishing. |
+| Save/publish | Your content is written directly to the project's main version. |
+| Website update | Automatic checks run and assemble the new site. |
+| Live | The update is finished and readers can see it on the website. |
 
-**Saving is not publishing.** A saved draft does not immediately replace the
-live page. After a change is accepted, the website also takes a little time to
-update automatically.
+**Treat saving in the editor as publishing.** There is no saved Draft,
+In review, or Ready queue in this mode. A save starts the automatic website
+update, so only save content that is ready to go live.
 
-**Unpublished does not mean private.** This project's files and history are
-public on GitHub, including saved drafts and uploaded pictures. Only save
-material that is safe for the public to see.
+Prepare unfinished work in an approved separate document. Do not rely on an
+unsaved browser tab to keep your draft safe. Uploaded pictures and saved files
+are public in GitHub, even before the website finishes updating.
 
 ## 2. Get ready to edit
 
-Ask your teacher or project lead which small task to start with and who will
-review it. For example, agree to improve a paragraph on the About page.
+Ask your teacher or project lead which small task to start with. For example,
+agree to improve a paragraph on the About page.
 
 You need a GitHub account and an invitation to edit this project. **GitHub**
-is the service where we keep our files, record changes, and review each
-other's work. A **repository**, or **repo**, is the project's folder of files
+is the service where we keep our files and record changes.
+A **repository**, or **repo**, is the project's folder of files
 and their history.
 
 1. Use your approved GitHub account and accept the project's invitation.
@@ -60,7 +60,7 @@ can access**, not just Money Minute. Use a trusted device, log out when finished
 on a shared computer, and ask the project lead if the permission request is
 unclear. Never give anyone your GitHub password.
 
-## 3. Create and save your draft
+## 3. Prepare your content
 
 For your first task, make one small, agreed change rather than rewriting the
 whole site.
@@ -83,10 +83,12 @@ For a new post:
 5. Add an optional cover image only if you have permission to publish it.
    Give it a useful description for people using screen readers; leave the
    description blank only if the image is purely decorative.
-6. Choose **Save**, keeping the work as a draft.
+6. Check the content using the checklist below before using the editor's
+   save/publish action.
 
 The editor offers rich-text formatting, so you do not need to learn code to
-write. Reopen your saved entry and check that your changes are there.
+write. Saving sends the entry straight to the project's main version, rather
+than creating a draft for approval.
 
 The About, Resources, and Contact text starts as clearly marked example copy.
 Replace it only with accurate, approved project information. The Contact page
@@ -94,55 +96,46 @@ does not include a working message form.
 
 **Dates:** a future-dated post stays off the website until a rebuild on or after
 that date, evaluated in UTC. This is not a precise publish-at-a-minute timer,
-and its saved draft is still public in GitHub.
+and its saved source is still public in GitHub. Do not use a future date as a
+private draft folder.
 
-## 4. Ask for review and respond to feedback
+## 4. Check before you publish
 
-Move the saved entry to **In review** in the editor's Workflow view. Tell your
-agreed reviewer what you changed and what you would like them to check.
+You are responsible for checking your work before saving. Asking a teammate
+or teacher to read it is still helpful, but the software does not require
+their approval.
 
-Behind the scenes, the editor creates a **pull request**, usually called a
-**PR**. This is a proposal to change the project. It lets the team compare the
-old and new versions, discuss improvements, and approve the change before it
-goes live. You do not need Git commands to create it through the editor.
-
-Before approving, the reviewer should check:
+Before saving, check:
 
 - The facts are supported and sources are credited.
 - The writing is clear, with useful headings and working links.
 - Images have permission and appropriate descriptions.
 - There is no private information or unfinished example text.
-- The project's automatic checks have passed.
+- You are editing the intended post or page, not overwriting someone else's work.
 
-Read feedback, improve the draft, and save again. Changes can require a fresh
-approval. The automatic checks catch some mistakes, but cannot judge whether a
-claim is true or an image has permission.
+Automatic checks run **after** saving. They catch some mistakes, but cannot
+judge whether a claim is true or an image has permission. If the checks fail,
+the new version is not deployed; ask a maintainer to help fix it.
 
-There is no separate public preview website for each draft. Review the saved
-text in the editor and the proposed changes in GitHub; ask a maintainer if you
-need help checking a layout before publication.
+There is no separate draft preview website. Ask a maintainer if you need help
+checking a layout before publication.
 
 ## 5. Publish and check the result
 
-Follow your teacher's or project lead's publishing arrangements. When the work
-is approved and the checks allow it, the authorised person can publish it.
+When your content is ready, use the editor's save/publish action. Members with
+Write access do not need someone else to merge a pull request.
 
-**Moving an entry to Ready is not the same as a reviewer's GitHub approval.**
-The project requires an approval, passing checks, and resolved review
-discussions. If publishing is blocked, ask your reviewer to check the proposal;
-do not disable the rules.
-
-Publishing accepts the change into **main**, the project's agreed version.
+Saving writes the change to **main**, the project's current version.
 An automatic process then checks the files, assembles the website, and puts
 the updated pages online. This is called a **build and deployment**.
 
 Once that process finishes, open the actual page on the
 [public website](https://www.money-minute.com/). Check its text, images, links,
 and appearance on a small screen. Do not assume it is live just because you
-clicked Publish. Tell your reviewer when you have checked it.
+clicked Publish. Let your team know what you changed.
 
 If you spot a mistake afterwards, tell the team and prepare a correction
-through the same review process. Ask a maintainer to handle anything urgent.
+by editing and saving the entry again. Ask a maintainer to handle anything urgent.
 
 ## Design and social links
 
@@ -162,9 +155,9 @@ account just because its name looks suitable.
 
 Only save content that is suitable for a public project. Do not upload private
 student details, personal contact information, passwords, or photographs
-without the required permission. This applies to **drafts and uploads too**.
+without the required permission. This applies to **all saved files and uploads**.
 
-Never paste passwords or access tokens into articles, reviews, issues, or chat.
+Never paste passwords or access tokens into articles, issues, or chat.
 If you accidentally share something private, tell the project lead immediately.
 Simply deleting it may leave a copy in the recorded history; a leaked password
 or token must also be revoked or replaced.
@@ -178,9 +171,9 @@ sign-in system. Leave those settings to the maintainer.
 | --- | --- |
 | I cannot sign in or save | Check that you accepted the invitation using the right GitHub account; ask the project lead about Write access. |
 | The sign-in popup expired | Close it and start sign-in again from the editor. Do not share the popup's return address. |
-| My saved work is not on the website | Check whether it is still a draft, awaiting approval, or waiting for the website update. |
-| Publishing is blocked | Ask the reviewer to check approval, feedback, and automatic checks on the PR. |
-| An approved change still does not appear | Ask a maintainer to check the update process and publication date; then try refreshing the page. |
+| My saved work is not on the website | Check whether the automatic update is still running or failed, and whether the publication date is in the future. |
+| Saving is blocked | Check Write access and refresh the editor; ask a maintainer about the error rather than repeatedly saving. |
+| An update finished but the change does not appear | Check the page address and refresh it; ask a maintainer if it still looks wrong. |
 | The editor is missing new fields | Refresh the editor to reload its configuration. |
 
 When asking for help, explain what you tried, what you expected, and the safe
@@ -191,8 +184,8 @@ popup's address. You do not need to diagnose the infrastructure yourself.
 
 **You can skip this section and still be a successful editor.**
 
-Git records changes to files. GitHub hosts those files and provides the review
-tools. Decap is our browser editor: it saves your changes into GitHub for you.
+Git records changes to files. GitHub hosts those files and their history.
+Decap is our browser editor: it saves your changes directly into GitHub for you.
 Eleventy assembles the content into web pages, GitHub Actions runs that process,
 and GitHub Pages serves the finished website to readers.
 
@@ -205,6 +198,12 @@ host the public blog in this setup.
 
 This is for members assigned technical maintenance, not a student-editor
 checklist. Infrastructure and credential changes need approval.
+
+Decap uses `publish_mode: simple` and `backend.branch: main`: content changes
+commit directly to main. A **pull request** (PR) proposes a change for review;
+it remains available for code collaboration but is not required for publishing.
+Switching modes does not publish or migrate any older editorial draft PRs.
+Check them separately with their authors before merging or closing them.
 
 | Area | Where to look |
 | --- | --- |
@@ -255,9 +254,10 @@ Operational settings to preserve:
   browser sign-in. The Pages workflow does **not** deploy Worker code.
   Wrangler's Cloudflare login is separate from student GitHub login; Workers
   access does not automatically grant ordinary DNS editing access.
-- The main-branch rules require one approval, resolved threads, an up-to-date
-  branch, and the **build** check. New changes dismiss stale approvals.
-  Administrators have a maintenance bypass; normal editors do not.
+- The main-branch rules allow ordinary Write collaborators to commit directly:
+  no PR approval or pre-commit status check is required. Branch deletion and
+  force pushes are blocked. Only trusted members should receive Write access,
+  which also allows changes to code and uploaded files.
 - PRs are checked but not deployed. Main changes deploy automatically.
   The daily rebuild is scheduled for **06:17 UTC** and can be delayed; GitHub
   can disable schedules in inactive public repos after 60 days.
@@ -265,7 +265,7 @@ Operational settings to preserve:
   renaming it. This setup has no automatic draft preview deployments.
 
 Further reference:
-[Decap workflow](https://decapcms.org/docs/editorial-workflows/),
+[Decap publish modes](https://decapcms.org/docs/configuration-options/#publish-mode),
 [GitHub Pages domains](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site),
 [Cloudflare secrets](https://developers.cloudflare.com/workers/configuration/secrets/).
 
@@ -274,11 +274,11 @@ Further reference:
 You do not need to memorise tool names. Try answering these practical questions:
 
 1. Where do you go to edit a post, and what account/access do you need?
-2. What is the difference between saving a draft and publishing it?
-3. Is an unpublished draft a safe place for private information? Why?
-4. How do you ask for review, and what should your reviewer check?
-5. Does moving an entry to Ready mean it has the required approval?
-6. What should you do if feedback arrives or publishing is blocked?
+2. What happens when you save an entry in the editor?
+3. Where should you prepare unfinished work? Are saved files and uploads private?
+4. What should you check before publishing?
+5. Do you need a pull request or another person's approval to publish?
+6. What happens if the automatic checks fail after saving?
 7. After publishing, how do you check that readers can see the right result?
 8. Why might a future-dated post not appear immediately?
 9. How do you turn a placeholder social entry into an approved working link?
@@ -290,14 +290,16 @@ You do not need to memorise tool names. Try answering these practical questions:
 
 1. Use the browser editor, with your approved GitHub account and an accepted
    invitation granting Write access.
-2. Saving records work for review; publishing accepts an approved change and
-   starts the process of updating the website.
-3. No. Draft files and uploads are visible in this public GitHub project.
-4. Move it to In review and contact your agreed reviewer. They check accuracy,
-   sources, writing, links, images, privacy, and automatic checks.
-5. No. The required GitHub approval and other checks are separate from Ready.
-6. Improve the draft and save again, or ask the reviewer to explain the blocker.
-   Do not turn off project rules.
+2. It writes directly to main and starts the automatic website update. Treat
+   saving as publishing, not as storing a draft.
+3. Use an approved separate writing document. Saved project files and uploads
+   are public on GitHub.
+4. Check accuracy, sources, writing, links, image permission and descriptions,
+   privacy, and that you are editing the intended entry.
+5. No. Members with Write access can publish directly. A teammate can still help
+   check the content voluntarily.
+6. The new site version is not deployed. Ask a maintainer to help resolve the
+   failure, correct the content if needed, and check the next update.
 7. Wait for the update to finish, then open the public page and check its text,
    links, images, and small-screen appearance.
 8. It stays off the site until a rebuild on or after its date in UTC; updates
@@ -309,5 +311,5 @@ You do not need to memorise tool names. Try answering these practical questions:
 
 </details>
 
-**First task:** with your reviewer, make one small draft change, explain why
-you made it, take it through review, and check the published result together.
+**First task:** agree on one small change with your project lead, check it
+carefully, save/publish it, and check the live result together.

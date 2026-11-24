@@ -2,13 +2,11 @@ backend:
   name: github
   repo: MonadicTrie/www.money-minute.com
   branch: main
-  # Reserved proposal: deploy the Worker and confirm this hostname before login.
   base_url: https://cms-auth.money-minute.com
   auth_endpoint: auth
-  squash_merges: true
   use_graphql: true
 
-publish_mode: editorial_workflow
+publish_mode: simple
 site_url: https://www.money-minute.com
 display_url: https://www.money-minute.com
 media_folder: src/uploads
