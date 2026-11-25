@@ -1,12 +1,11 @@
 ---
 title: About the project
-description: An example introduction to this DECA student project.
+description: An introduction to this DECA student project.
 ---
-> **Example content:** use this page as a starting point. Replace the prompts with accurate information about your own project.
 
 ## The idea
 
-Money Minute is a student project. Describe the topic you are exploring, who you hope will read your work, and why you chose it.
+Money Minute is a Loomis Chaffee DECA student project. We hope to educate highschoolers and rising college students on financial literacy skills they will need upon graduating high school and starting college such as the basics of credit, investing, budgeting, and debt. We decided to do this project because we feel as though many highschoolers aren't learning necessary financial skills they will need before graduating and are worried about money in the future.  
 
 ## What readers can expect
 
