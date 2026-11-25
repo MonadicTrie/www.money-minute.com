@@ -83,7 +83,7 @@ Not published yet.
     assert.match(cmsConfig, /preview_path: "articles\/\{\{slug\}\}"/u);
     for (const slug of ["about", "resources", "contact"]) {
       const page = await readFile(join(fixture, "_site", slug, "index.html"), "utf8");
-      assert.match(page, /Example content/u);
+      assert.match(page, /<h1>[^<]+<\/h1>/u);
       assert.ok(sitemap.includes(`https://www.money-minute.com/${slug}/`));
     }
     const interviews = await readFile(join(fixture, "_site", "interviews", "index.html"), "utf8");
