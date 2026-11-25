@@ -92,6 +92,8 @@ collections:
             widget: select
             options:
               - { label: Burgundy, coral and cream, value: editorial }
+              - { label: Dollar bill, green and ivory, value: dollar }
+              - { label: Blue, pale gold and ivory, value: blue }
               - { label: Forest, value: forest }
               - { label: Ocean, value: ocean }
               - { label: Plum, value: plum }

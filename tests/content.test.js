@@ -22,6 +22,9 @@ test("invalid post data fails the build rather than disappearing silently", () =
 test("design settings reject unsupported values and empty required text", () => {
   const settings = { title: "Blog", description: "Description", heading: "Heading", intro: "Introduction", palette: "forest", font: "sans", density: "compact" };
   assert.equal(validateSettings(settings), settings);
+  assert.equal(validateSettings({ ...settings, palette: "dollar" }).palette, "dollar");
+  assert.equal(validateSettings({ ...settings, palette: "blue" }).palette, "blue");
+  assert.throws(() => validateSettings({ ...settings, palette: "navy" }), /supported/u);
   assert.throws(() => validateSettings({ ...settings, palette: 'forest" onclick="alert(1)' }), /supported/u);
   assert.throws(() => validateSettings({ ...settings, intro: "" }), /intro/u);
 });

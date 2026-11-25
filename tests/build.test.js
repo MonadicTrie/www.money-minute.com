@@ -81,6 +81,10 @@ Not published yet.
     const cmsConfig = await readFile(join(fixture, "src", "admin", "config.yml"), "utf8");
     assert.match(cmsConfig, /label: Articles\s+label_singular: Article/u);
     assert.match(cmsConfig, /preview_path: "articles\/\{\{slug\}\}"/u);
+    assert.match(cmsConfig, /label: Burgundy, coral and cream, value: editorial/u);
+    assert.match(cmsConfig, /label: Dollar bill, green and ivory, value: dollar/u);
+    assert.match(cmsConfig, /label: Blue, pale gold and ivory, value: blue/u);
+    assert.doesNotMatch(cmsConfig, /label: Navy,/u);
     for (const slug of ["about", "resources", "contact"]) {
       const page = await readFile(join(fixture, "_site", slug, "index.html"), "utf8");
       assert.match(page, /<h1>[^<]+<\/h1>/u);
