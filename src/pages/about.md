@@ -9,12 +9,12 @@ Money Minute is a Loomis Chaffee DECA student project. We hope to educate highsc
 
 ## What readers can expect
 
-Explain the kinds of articles you plan to publish. You could include short explainers, research reflections, or project updates.
+Readers can expect long from interviews as well as articles further explain concepts covered in videos.
 
 ## The team
 
 Introduce the team's roles and contributions. Add names or photographs only with permission, and avoid publishing private student details.
 
-## How we work
 
-Describe your research and review process. Explain how you check sources, credit other people's work, and correct mistakes.
+
+
