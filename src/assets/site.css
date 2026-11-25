@@ -73,7 +73,7 @@ h3 { font-size: 1.8rem; margin: .3em 0 .65em; }
 .shell { width: calc(100% - 4rem); margin-inline: auto; }
 .site-header { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding-block: 1.5rem; }
 .brand { display: flex; align-items: center; gap: .75rem; min-width: 0; overflow-wrap: anywhere; color: var(--ink); text-decoration: none; font-family: Georgia, "Times New Roman", serif; font-weight: 700; font-size: 1.5rem; line-height: 1.15; }
-.brand-mark { display: grid; place-items: center; flex-shrink: 0; background: var(--ink); color: var(--bg); border-radius: 50%; width: 2.3rem; height: 2.3rem; font-size: 1.3rem; font-style: italic; }
+.brand-mark { flex-shrink: 0; border-radius: 50%; width: 2.3rem; height: 2.3rem; object-fit: cover; }
 nav { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; }
 nav a { text-decoration: none; font-weight: 600; font-size: .85rem; }
 nav a[aria-current="page"] { text-decoration: underline; }
