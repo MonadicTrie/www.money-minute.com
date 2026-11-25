@@ -93,9 +93,9 @@ Not published yet.
     const interviews = await readFile(join(fixture, "_site", "interviews", "index.html"), "utf8");
     assert.match(interviews, /No interviews have been published yet\./u);
     assert.ok(sitemap.includes("https://www.money-minute.com/interviews/"));
-    assert.match(home, /@your-project/u);
-    assert.match(home, /class="placeholder-label">Placeholder/u);
-    assert.ok(!home.includes('href="https://www.instagram.com'));
+    assert.match(home, /href="https:\/\/www\.instagram\.com\/money\._minute\/"/u);
+    assert.match(home, /Instagram <span class="social-handle">@money\._minute<\/span>/u);
+    assert.ok(!home.includes('class="placeholder-label"'));
     await access(join(fixture, "_site", "admin", "decap-cms.js"));
     await access(join(fixture, "_site", "admin", "decap-cms.js.LICENSE.txt"));
     const cmsAssets = await readdir(join(root, "node_modules", "decap-cms", "dist"));
