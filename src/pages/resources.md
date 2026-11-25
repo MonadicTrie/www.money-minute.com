@@ -8,7 +8,7 @@ description: An example place for useful links and reading.
 
 For each resource, include its title, publisher, link, and a short explanation of why it is useful. Check who wrote it and when it was last updated.
 
-## Plan your first post
+## Plan your first article
 
 1. Choose one question to explore.
 2. Find and compare reliable sources.

@@ -1,0 +1,10 @@
+---
+layout: base.njk
+title: Articles
+description: Articles about money and financial decisions.
+permalink: /articles/index.html
+---
+<section class="posts-section" aria-labelledby="articles-heading">
+  <div class="section-heading"><h1 id="articles-heading">Articles</h1><span>{{ collections.posts.length }} {% if collections.posts.length == 1 %}article{% else %}articles{% endif %}</span></div>
+  {% include "article-list.njk" %}
+</section>

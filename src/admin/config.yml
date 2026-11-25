@@ -14,14 +14,14 @@ public_folder: /uploads
 
 collections:
   - name: posts
-    label: Posts
-    label_singular: Post
+    label: Articles
+    label_singular: Article
     folder: src/posts
     create: true
     extension: md
     format: frontmatter
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    preview_path: "posts/{{slug}}"
+    preview_path: "articles/{{slug}}"
     summary: "{{title}} - {{author}}"
     sortable_fields: [date, title, author]
     editor:
@@ -36,7 +36,7 @@ collections:
         date_format: YYYY-MM-DD
         time_format: false
         format: YYYY-MM-DD
-        hint: "Future-dated posts are hidden until a daily site rebuild after this date (UTC)."
+        hint: "Future-dated articles are hidden until a daily site rebuild after this date (UTC)."
       - { label: Category, name: category, widget: string, required: false }
       - { label: Cover image, name: cover, widget: image, required: false, allow_multiple: false }
       - { label: Cover image description, name: cover_alt, widget: string, required: false, hint: "Describe the image for screen readers; leave empty only for a decorative image." }
@@ -49,6 +49,13 @@ collections:
       - name: about
         label: About
         file: src/pages/about.md
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Summary, name: description, widget: text }
+          - { label: Body, name: body, widget: markdown }
+      - name: interviews
+        label: Interviews
+        file: src/pages/interviews.md
         fields:
           - { label: Title, name: title, widget: string }
           - { label: Summary, name: description, widget: text }

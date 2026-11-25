@@ -10,7 +10,7 @@ Money Minute is a student project. Describe the topic you are exploring, who you
 
 ## What readers can expect
 
-Explain the kinds of posts you plan to publish. You could include short explainers, research reflections, or project updates.
+Explain the kinds of articles you plan to publish. You could include short explainers, research reflections, or project updates.
 
 ## The team
 

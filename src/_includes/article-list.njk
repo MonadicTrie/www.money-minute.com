@@ -1,0 +1,15 @@
+<div class="post-grid">
+  {% for post in collections.posts %}
+  <article class="post-card">
+    {% if post.data.cover %}<img src="{{ post.data.cover | escape }}" alt="{{ post.data.cover_alt | escape }}" width="600" loading="lazy" decoding="async">{% endif %}
+    <div class="card-content">
+      {% if post.data.category %}<p class="eyebrow">{{ post.data.category | escape }}</p>{% endif %}
+      <h3><a href="{{ post.url | escape }}">{{ post.data.title | escape }}</a></h3>
+      <p>{{ post.data.description | escape }}</p>
+      <p class="meta">{{ post.data.author | escape }} <span aria-hidden="true">/</span> <time datetime="{{ post.data.date | isoDate }}">{{ post.data.date | readableDate }}</time></p>
+    </div>
+  </article>
+  {% else %}
+  <div class="empty-state"><h3>No articles yet</h3><p>Published articles will appear here.</p></div>
+  {% endfor %}
+</div>

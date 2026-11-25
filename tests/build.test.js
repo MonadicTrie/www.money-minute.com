@@ -8,7 +8,7 @@ import { execFileSync } from "node:child_process";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 
-test("built site publishes posts, safely renders content, and works under the Pages project path", async () => {
+test("built site publishes articles, preserves old URLs, safely renders content, and works under the Pages project path", async () => {
   const fixture = await mkdtemp(join(tmpdir(), "money-minute-build-"));
   try {
     for (const path of ["src", "lib", "eleventy.config.js", "package.json"]) {
@@ -46,24 +46,49 @@ Not published yet.
     });
     build();
     const home = await readFile(join(fixture, "_site", "index.html"), "utf8");
-    assert.match(home, /href="\/posts\/published\/"/u);
+    assert.match(home, /href="\/articles\/published\/"/u);
     assert.match(home, /Test &lt;script&gt;title&lt;\/script&gt;/u);
     assert.ok(!home.includes("Future test"));
-    const post = await readFile(join(fixture, "_site", "posts", "published", "index.html"), "utf8");
-    assert.match(post, /<h1>Test body<\/h1>/u);
-    assert.ok(!post.includes('<script>alert("not executable")</script>'));
+    const article = await readFile(join(fixture, "_site", "articles", "published", "index.html"), "utf8");
+    assert.match(article, /<h1>Test body<\/h1>/u);
+    assert.match(article, /All articles/u);
+    assert.ok(!article.includes('<script>alert("not executable")</script>'));
+    await assert.rejects(access(join(fixture, "_site", "articles", "future", "index.html")));
     await assert.rejects(access(join(fixture, "_site", "posts", "future", "index.html")));
+    const legacyUrl = await readFile(join(fixture, "_site", "posts", "published", "index.html"), "utf8");
+    assert.match(legacyUrl, /http-equiv="refresh" content="0; url=\/articles\/published\/"/u);
+    const articlesPage = await readFile(join(fixture, "_site", "articles", "index.html"), "utf8");
+    assert.match(articlesPage, /href="\/articles\/published\/"/u);
     const feed = await readFile(join(fixture, "_site", "feed.xml"), "utf8");
-    assert.match(feed, /https:\/\/www.money-minute.com\/posts\/published\//u);
+    assert.match(feed, /https:\/\/www.money-minute.com\/articles\/published\//u);
     assert.ok(!feed.includes("Future test"));
     const sitemap = await readFile(join(fixture, "_site", "sitemap.xml"), "utf8");
     assert.ok(!sitemap.includes("future"));
+    assert.ok(sitemap.includes("https://www.money-minute.com/articles/"));
+    assert.ok(sitemap.includes("https://www.money-minute.com/articles/published/"));
+    assert.ok(!sitemap.includes("/posts/"));
+    const navigation = home.match(/<nav aria-label="Main navigation">([\s\S]*?)<\/nav>/u);
+    assert.ok(navigation);
+    assert.deepEqual(
+      [...navigation[1].matchAll(/<a href="([^"]+)"[^>]*>([^<]+)<\/a>/gu)]
+        .map(([, href, label]) => ({ href, label })),
+      [
+        { href: "/about/", label: "About" },
+        { href: "/interviews/", label: "Interviews" },
+        { href: "/articles/", label: "Articles" },
+      ],
+    );
+    const cmsConfig = await readFile(join(fixture, "src", "admin", "config.yml"), "utf8");
+    assert.match(cmsConfig, /label: Articles\s+label_singular: Article/u);
+    assert.match(cmsConfig, /preview_path: "articles\/\{\{slug\}\}"/u);
     for (const slug of ["about", "resources", "contact"]) {
       const page = await readFile(join(fixture, "_site", slug, "index.html"), "utf8");
       assert.match(page, /Example content/u);
-      assert.ok(home.includes(`href="/${slug}/"`));
       assert.ok(sitemap.includes(`https://www.money-minute.com/${slug}/`));
     }
+    const interviews = await readFile(join(fixture, "_site", "interviews", "index.html"), "utf8");
+    assert.match(interviews, /No interviews have been published yet\./u);
+    assert.ok(sitemap.includes("https://www.money-minute.com/interviews/"));
     assert.match(home, /@your-project/u);
     assert.match(home, /class="placeholder-label">Placeholder/u);
     assert.ok(!home.includes('href="https://www.instagram.com'));
@@ -92,20 +117,22 @@ description: Edited page summary
 ## Edited student content
 `);
     build({ PAGES_PATH_PREFIX: "/www.money-minute.com/", PAGES_BASE_URL: "https://monadictrie.github.io/www.money-minute.com" });
-    const projectPost = await readFile(join(fixture, "_site", "posts", "published", "index.html"), "utf8");
-    assert.match(projectPost, /href="\/www.money-minute.com\/assets\/site.css"/u);
-    assert.match(projectPost, /src="\/www.money-minute.com\/uploads\/test.png"/u);
-    assert.match(projectPost, /href="https:\/\/monadictrie.github.io\/www.money-minute.com\/posts\/published\/"/u);
-    assert.match(projectPost, /data-palette="editorial" data-font="serif" data-density="compact"/u);
-    assert.match(projectPost, /href="https:\/\/example.com\/student-project"/u);
-    assert.match(projectPost, /Example &lt;team&gt;/u);
-    assert.ok(!projectPost.includes('class="placeholder-label"'));
+    const projectArticle = await readFile(join(fixture, "_site", "articles", "published", "index.html"), "utf8");
+    assert.match(projectArticle, /href="\/www.money-minute.com\/assets\/site.css"/u);
+    assert.match(projectArticle, /src="\/www.money-minute.com\/uploads\/test.png"/u);
+    assert.match(projectArticle, /href="https:\/\/monadictrie.github.io\/www.money-minute.com\/articles\/published\/"/u);
+    assert.match(projectArticle, /data-palette="editorial" data-font="serif" data-density="compact"/u);
+    assert.match(projectArticle, /href="https:\/\/example.com\/student-project"/u);
+    assert.match(projectArticle, /Example &lt;team&gt;/u);
+    assert.ok(!projectArticle.includes('class="placeholder-label"'));
+    const projectLegacyUrl = await readFile(join(fixture, "_site", "posts", "published", "index.html"), "utf8");
+    assert.match(projectLegacyUrl, /http-equiv="refresh" content="0; url=\/www\.money-minute\.com\/articles\/published\/"/u);
     const editedPage = await readFile(join(fixture, "_site", "about", "index.html"), "utf8");
     assert.match(editedPage, /<h1>Edited About<\/h1>/u);
     assert.match(editedPage, /<h2>Edited student content<\/h2>/u);
     assert.match(editedPage, /href="\/www.money-minute.com\/about\/" aria-current="page"/u);
     const projectFeed = await readFile(join(fixture, "_site", "feed.xml"), "utf8");
-    assert.match(projectFeed, /https:\/\/monadictrie.github.io\/www.money-minute.com\/posts\/published\//u);
+    assert.match(projectFeed, /https:\/\/monadictrie.github.io\/www.money-minute.com\/articles\/published\//u);
   } finally {
     await rm(resolve(fixture), { recursive: true, force: true });
   }

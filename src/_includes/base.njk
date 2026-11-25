@@ -18,11 +18,9 @@
     <header class="site-header shell">
       <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">M</span>{{ site.title | escape }}</a>
       <nav aria-label="Main navigation">
-        <a href="/"{% if page.url == '/' %} aria-current="page"{% endif %}>Posts</a>
         <a href="/about/"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a>
-        <a href="/resources/"{% if page.url == '/resources/' %} aria-current="page"{% endif %}>Resources</a>
-        <a href="/contact/"{% if page.url == '/contact/' %} aria-current="page"{% endif %}>Contact</a>
-        <a href="/admin/">Editor</a>
+        <a href="/interviews/"{% if page.url == '/interviews/' %} aria-current="page"{% endif %}>Interviews</a>
+        <a href="/articles/"{% if page.url == '/articles/' %} aria-current="page"{% endif %}>Articles</a>
       </nav>
     </header>
     <main id="main" class="shell">{{ content | safe }}</main>
