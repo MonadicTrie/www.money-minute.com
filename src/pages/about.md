@@ -5,7 +5,7 @@ description: An introduction to this DECA student project.
 
 ## The idea
 
-Money Minute is a Loomis Chaffee DECA student project. We hope to educate highschoolers and rising college students on financial literacy skills they will need upon graduating high school and starting college such as the basics of credit, investing, budgeting, and debt. We decided to do this project because we feel as though many highschoolers aren't learning necessary financial skills they will need before graduating and are worried about money in the future.  
+Money Minute is a Loomis Chaffee DECA student project. We hope to educate highschoolers and rising college students on financial literacy skills they will need upon graduating high school and starting college such as the basics of credit, investing, budgeting, and debt. We decided to do this project because we feel as though highschoolers who learn these important skills will do better financially throughout college.   
 
 ## What readers can expect
 
