@@ -95,10 +95,14 @@ Not published yet.
     assert.match(about, /<strong>Nano Anh Nguyen<\/strong> - Co founder and Financial Educator\./u);
     assert.match(about, /<img[^>]+src="\/assets\/anya-kapoor\.jpg"[^>]+alt="Anya Kapoor"/u);
     assert.match(about, /<strong>Anya Kapoor<\/strong> - Co founder and Financial Educator\./u);
+    assert.match(about, /<img[^>]+src="\/assets\/nina-mattamana\.jpg"[^>]+alt="Nina Mattamana"/u);
+    assert.match(about, /<strong>Nina Mattamana<\/strong> - Co founder and Financial Educator\./u);
     assert.ok(about.indexOf('alt="Nano Anh Nguyen"') < about.indexOf('alt="Anya Kapoor"'));
+    assert.ok(about.indexOf('alt="Anya Kapoor"') < about.indexOf('alt="Nina Mattamana"'));
     assert.ok(!about.includes("Introduce the team's roles"));
     await access(join(fixture, "_site", "assets", "nano-anh-nguyen.jpg"));
     await access(join(fixture, "_site", "assets", "anya-kapoor.jpg"));
+    await access(join(fixture, "_site", "assets", "nina-mattamana.jpg"));
     const interviews = await readFile(join(fixture, "_site", "interviews", "index.html"), "utf8");
     assert.match(interviews, /No interviews have been published yet\./u);
     assert.ok(sitemap.includes("https://www.money-minute.com/interviews/"));

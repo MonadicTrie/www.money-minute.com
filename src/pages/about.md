@@ -19,6 +19,9 @@ Readers can expect long from interviews as well as articles further explain conc
 - ![Anya Kapoor](/assets/anya-kapoor.jpg)
 
   **Anya Kapoor** - Co founder and Financial Educator.
+- ![Nina Mattamana](/assets/nina-mattamana.jpg)
+
+  **Nina Mattamana** - Co founder and Financial Educator.
 
 
 
