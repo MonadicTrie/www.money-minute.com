@@ -13,7 +13,12 @@ Readers can expect long from interviews as well as articles further explain conc
 
 ## The team
 
-Introduce the team's roles and contributions. Add names or photographs only with permission, and avoid publishing private student details.
+- ![Nano Anh Nguyen](/assets/nano-anh-nguyen.jpg)
+
+  **Nano Anh Nguyen** - Co founder and Financial Educator.
+- ![Anya Kapoor](/assets/anya-kapoor.jpg)
+
+  **Anya Kapoor** - Co founder and Financial Educator.
 
 
 

@@ -129,6 +129,31 @@ nav a[aria-current="page"] { text-decoration: underline; }
 .cover { width: 100%; border-radius: .25rem; margin-top: 2rem; }
 .prose { font-size: 1.1rem; overflow-wrap: anywhere; }
 .prose h2, .prose h3 { margin-top: 2em; }
+.prose ul:has(> li img[alt="Nano Anh Nguyen"]) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+  gap: 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+.prose ul:has(> li img[alt="Nano Anh Nguyen"]) > li { min-width: 0; }
+.prose ul:has(> li img[alt="Nano Anh Nguyen"]) img {
+  width: min(100%, 14rem);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: .25rem;
+  margin-inline: auto;
+}
+.prose ul:has(> li img[alt="Nano Anh Nguyen"]) > li > p:first-child { margin-block: 0; }
+.prose ul:has(> li img[alt="Nano Anh Nguyen"]) > li > p:last-child {
+  margin-block: .75rem 0;
+  text-align: center;
+  font-size: .75rem;
+  white-space: nowrap;
+}
+@media (max-width: 22rem) {
+  .prose ul:has(> li img[alt="Nano Anh Nguyen"]) > li > p:last-child { white-space: normal; }
+}
 .prose blockquote { border-left: 3px solid var(--accent); margin-inline: 0; padding-left: 1.5rem; color: var(--muted); }
 .prose pre { overflow-x: auto; background: var(--tint); padding: 1rem; border-radius: .25rem; }
 .prose code { font-size: .9em; }
